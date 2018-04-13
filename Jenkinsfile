@@ -13,11 +13,19 @@ pipeline {
             echo 'hello'
           }
         }
-        stage('') {
+        stage('error') {
           steps {
             echo 'jenkins'
           }
         }
+      }
+    }
+    stage('build') {
+      steps {
+        waitUntil() {
+          sh 'echo "yes"'
+        }
+        
       }
     }
   }
