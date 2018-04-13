@@ -20,12 +20,9 @@ pipeline {
         }
       }
     }
-    stage('build') {
+    stage('') {
       steps {
-        waitUntil() {
-          sh 'echo "yes"'
-        }
-        
+        sh 'uname -a; pwd;ls'
       }
     }
   }
