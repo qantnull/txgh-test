@@ -29,4 +29,7 @@ pipeline {
       }
     }
   }
+  environment {
+    Name = 'Vance Li'
+  }
 }
