@@ -20,9 +20,14 @@ pipeline {
         }
       }
     }
-    stage('') {
+    stage('show sys version') {
       steps {
         sh 'uname -a; pwd;ls'
+      }
+    }
+    stage('python version') {
+      steps {
+        sh 'python --version'
       }
     }
   }
