@@ -6,28 +6,15 @@ pipeline {
     
   }
   stages {
-    stage('Output Test') {
-      parallel {
-        stage('Output Test') {
-          steps {
-            echo 'hello'
-          }
-        }
-        stage('error') {
-          steps {
-            echo 'jenkins'
-          }
-        }
+    stage('install requirements') {
+      steps {
+        sh 'pip install -r requirements'
       }
     }
-    stage('show sys version') {
+    stage('package codes') {
       steps {
-        sh 'uname -a; pwd;ls'
-      }
-    }
-    stage('python version') {
-      steps {
-        sh 'python --version'
+        sh '''python --version
+echo "awscli needed"'''
       }
     }
   }
