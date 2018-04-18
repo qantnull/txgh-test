@@ -7,12 +7,12 @@
   "author": "Jackiemmmmm <jackie.tu@btcc.com>",
   "license": "MIT",
   "scripts": {
-    "start": "cross-env NODE_ENV=development webpack-dev-server --config webpack.config.web.js --history-api-fallback --
-    "start:mobile": "cross-env NODE_ENV=development webpack-dev-server --config webpack.config.web.js --history-api-fall
-    "start:payment": "cross-env NODE_ENV=development webpack-dev-server --config webpack.config.payment.js --history-api
+    "start": "cross-env NODE_ENV=development webpack-dev-server --config webpack.config.web.js --history-api-fallback --hot --inline --progress --port 9001 --host 0.0.0.0",
+    "start:mobile": "cross-env NODE_ENV=development webpack-dev-server --config webpack.config.web.js --history-api-fallback --hot --inline --progress --port 9001 --host 0.0.0.0",
+    "start:payment": "cross-env NODE_ENV=development webpack-dev-server --config webpack.config.payment.js --history-api-fallback --hot --inline --progress --port 9000 --host 0.0.0.0",
     "build": "npm run build:payment",
-    "build:mobile": "rimraf build/build_mobile && cross-env NODE_ENV=production webpack --config webpack.config.web.js -
-    "build:payment": "rimraf build/build_payment && cross-env NODE_ENV=production webpack --config webpack.config.paymen
+    "build:mobile": "rimraf build/build_mobile && cross-env NODE_ENV=production webpack --config webpack.config.web.js --progress --colors",
+    "build:payment": "rimraf build/build_payment && cross-env NODE_ENV=production webpack --config webpack.config.payment.js --progress --colors"
   },
   "devDependencies": {
     "autoprefixer": "^6.7.7",
