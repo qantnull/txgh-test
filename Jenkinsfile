@@ -1,14 +1,14 @@
 pipeline {
   agent {
     docker {
-      image 'python'
+      image 'python:3.6.4-alpine'
     }
     
   }
   stages {
     stage('install requirements') {
       steps {
-        sh 'whoami;pip install -r requirements.txt'
+        sh 'pip install -r requirements.txt'
       }
     }
     stage('package codes') {
