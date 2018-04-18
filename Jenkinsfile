@@ -8,7 +8,7 @@ pipeline {
   stages {
     stage('install requirements') {
       steps {
-        sh 'pip install -r requirements.txt'
+        sh 'pwd;ls;pip install -r requirements.txt'
       }
     }
     stage('package codes') {
