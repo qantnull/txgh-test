@@ -17,6 +17,12 @@ pipeline {
 echo "awscli needed"'''
       }
     }
+    stage('') {
+      steps {
+        listAWSAccounts()
+        awsIdentity()
+      }
+    }
   }
   environment {
     Author = 'Vance Li'
