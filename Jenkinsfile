@@ -8,7 +8,7 @@ pipeline {
   stages {
     stage('install requirements') {
       steps {
-        sh 'pwd;ls;pip install -r requirements.txt'
+        sh 'npm install'
       }
     }
     stage('package codes') {
