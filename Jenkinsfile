@@ -8,7 +8,7 @@ pipeline {
   stages {
     stage('install requirements') {
       steps {
-        sh 'pip install -r requirements.txt'
+        sh 'pip install -r requirements.txt --user root'
       }
     }
     stage('package codes') {
