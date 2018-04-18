@@ -1,7 +1,7 @@
 pipeline {
   agent {
     docker {
-      image 'python:3.6.4-alpine'
+      image 'node:9.11-alpine'
     }
     
   }
@@ -19,6 +19,6 @@ echo "awscli needed"'''
     }
   }
   environment {
-    Name = 'Vance Li'
+    Author = 'Vance Li'
   }
 }
