@@ -1,4 +1,4 @@
-{{
+{
   "name": "mobi-webview-pages",
   "version": "1.0.0",
   "description": "A Vue.js project",
@@ -96,5 +96,4 @@
     "last 2 versions",
     "not ie <= 8"
   ]
-}
 }
