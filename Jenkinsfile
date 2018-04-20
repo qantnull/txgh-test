@@ -8,7 +8,7 @@ pipeline {
   stages {
     stage('install requirements') {
       steps {
-        sh 'npm install'
+        sh 'echo "npm install"'
       }
     }
     stage('package codes') {
@@ -17,7 +17,7 @@ pipeline {
 echo "awscli needed"'''
       }
     }
-    stage('') {
+    stage('error') {
       steps {
         listAWSAccounts()
         awsIdentity()
