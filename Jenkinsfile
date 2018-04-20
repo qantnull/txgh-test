@@ -19,7 +19,6 @@ echo "awscli needed"'''
     }
     stage('error') {
       steps {
-        listAWSAccounts()
         awsIdentity()
       }
     }
