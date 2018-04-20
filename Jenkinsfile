@@ -13,7 +13,7 @@ pipeline {
     }
     stage('package codes') {
       steps {
-        sh '''python --version
+        sh '''node --version
 echo "awscli needed"'''
       }
     }
