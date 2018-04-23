@@ -14,7 +14,11 @@ pipeline {
     stage('package codes') {
       steps {
         sh '''node --version
-echo "awscli needed"'''
+apk add --update \\
+    python \\
+    python-dev \\
+    py-pip \\
+    build-base \\'''
       }
     }
     stage('error') {
