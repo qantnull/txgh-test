@@ -14,7 +14,8 @@ pipeline {
     stage('package codes') {
       steps {
         sh '''node --version
-apk add --update python python-dev py-pip build-base '''
+apk add --update python python-dev py-pip build-base
+pip install awscli  '''
       }
     }
     stage('error') {
