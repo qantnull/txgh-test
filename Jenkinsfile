@@ -23,6 +23,11 @@ pip install awscli  '''
         sh 'aws configure list'
       }
     }
+    stage('show aws identity') {
+      steps {
+        awsIdentity()
+      }
+    }
   }
   environment {
     Author = 'Vance Li'
