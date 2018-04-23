@@ -20,7 +20,7 @@ pip install awscli  '''
     }
     stage('error') {
       steps {
-        sh 'aws configure list --profile Staging'
+        sh 'aws configure list '
       }
     }
     stage('show aws identity') {
