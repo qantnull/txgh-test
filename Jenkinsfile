@@ -19,7 +19,7 @@ apk add --update python python-dev py-pip build-base '''
     }
     stage('error') {
       steps {
-        awsIdentity()
+        sh 'aws configure list'
       }
     }
   }
