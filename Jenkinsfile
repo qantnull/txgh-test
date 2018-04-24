@@ -11,6 +11,7 @@ pipeline {
         sh 'echo "npm install"'
       }
     }
+    
     stage('show1') {
       steps {
         sh '''node --version
@@ -18,17 +19,19 @@ apk add --update python python-dev py-pip build-base
 pip install awscli  '''
       }
     }
-    stage('error') {
+    
+    stage('show') {
       steps {
         sh '''pwd
-ls
-whoami
-env
-aws configure list'''
+              ls
+              whoami
+              env
+              aws configure list'''
         s3FindFiles(bucket: 'circleci-code', path: 'mobi-admin-00247b6ea8.zip')
         s3Download(file: 'mobi-admin-00247b6ea8.zip', bucket: 'circleci-code', path: 'mobi-admin-00247b6ea8.zip')
       }
     }
+    
     stage('show aws identity') {
       steps {
         listAWSAccounts()
