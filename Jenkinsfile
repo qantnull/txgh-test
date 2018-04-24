@@ -12,10 +12,19 @@ pipeline {
       }
     }
     stage('package codes') {
-      steps {
-        sh '''node --version
+      parallel {
+        stage('package codes') {
+          steps {
+            sh '''node --version
 apk add --update python python-dev py-pip build-base
 pip install awscli  '''
+          }
+        }
+        stage('') {
+          steps {
+            listAWSAccounts()
+          }
+        }
       }
     }
     stage('error') {
