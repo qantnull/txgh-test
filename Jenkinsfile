@@ -12,7 +12,7 @@ pipeline {
       }
     }
     
-    stage('show1') {
+    stage('show env') {
       steps {
         sh '''node --version
 apk add --update python python-dev py-pip build-base
@@ -20,7 +20,7 @@ pip install awscli  '''
       }
     }
     
-    stage('show') {
+    stage('show aws') {
       steps {
         sh '''pwd
               ls
