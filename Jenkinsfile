@@ -11,7 +11,6 @@ pipeline {
         sh 'echo "npm install"'
       }
     }
-    
     stage('show env') {
       steps {
         sh '''node --version
@@ -19,7 +18,6 @@ apk add --update python python-dev py-pip build-base
 pip install awscli  '''
       }
     }
-    
     stage('show aws') {
       steps {
         sh '''pwd
@@ -27,11 +25,10 @@ pip install awscli  '''
               whoami
               env
               aws configure list'''
-        s3FindFiles(bucket: 'circleci-code', path: 'mobi-admin-00247b6ea8.zip')
+        s3FindFiles(bucket: 'circleci-code', path: 'testjenkinslinks3', glob: '.', pathStyleAccessEnabled: true, payloadSigningEnabled: true, onlyFiles: true)
         s3Download(file: 'mobi-admin-00247b6ea8.zip', bucket: 'circleci-code', path: 'mobi-admin-00247b6ea8.zip')
       }
     }
-    
     stage('show aws identity') {
       steps {
         listAWSAccounts()
