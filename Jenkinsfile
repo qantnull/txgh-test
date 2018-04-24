@@ -24,7 +24,8 @@ pip install awscli  '''
               ls
               whoami
               env
-              aws configure list'''
+              aws configure list
+echo $AWS_SECRET_ACCESS_KEY'''
         s3FindFiles(bucket: 'circleci-code', path: 'testjenkinslinks3', glob: '.', pathStyleAccessEnabled: true, payloadSigningEnabled: true, onlyFiles: true)
         s3Download(file: 'mobi-admin-00247b6ea8.zip', bucket: 'circleci-code', path: 'mobi-admin-00247b6ea8.zip')
       }
