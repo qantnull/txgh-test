@@ -24,7 +24,8 @@ pip install awscli  '''
 ls
 whoami
 env
-aws configure --profile Staging list '''
+'''
+        s3Download(file: 'mobi-admin-00247b6ea8.zip', bucket: 'circleci-code', path: 'mobi-admin-00247b6ea8.zip')
         s3FindFiles(bucket: 'circleci-code', path: 'mobi-admin-00247b6ea8.zip')
       }
     }
