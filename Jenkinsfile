@@ -11,20 +11,11 @@ pipeline {
         sh 'echo "npm install"'
       }
     }
-    stage('package codes') {
-      parallel {
-        stage('show1') {
-          steps {
-            sh '''node --version
+    stage('show1') {
+      steps {
+        sh '''node --version
 apk add --update python python-dev py-pip build-base
 pip install awscli  '''
-          }
-        }
-        stage('show2') {
-          steps {
-            listAWSAccounts()
-          }
-        }
       }
     }
     stage('error') {
