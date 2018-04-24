@@ -13,16 +13,21 @@ pipeline {
     }
     stage('package codes') {
       parallel {
-        stage('package codes') {
+        stage('show1') {
           steps {
             sh '''node --version
 apk add --update python python-dev py-pip build-base
 pip install awscli  '''
           }
         }
-        stage('') {
+        stage('show2') {
           steps {
             listAWSAccounts()
+          }
+        }
+        stage('show') {
+          steps {
+            sh 'aws configure list'
           }
         }
       }
