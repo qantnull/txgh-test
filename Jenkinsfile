@@ -15,17 +15,17 @@ pipeline {
       steps {
         sh '''node --version
 apk add --update python python-dev py-pip build-base
-pip install awscli  '''
+pip install awscli  
+pwd
+ls
+whoami
+env
+aws configure list'''
       }
     }
     stage('show aws') {
       steps {
-        sh '''pwd
-              ls
-              whoami
-              env
-              aws configure list
-echo $AWS_SECRET_ACCESS_KEY'''
+        sh 'echo $AWS_SECRET_ACCESS_KEY'
         s3FindFiles(bucket: 'circleci-code', path: 'testjenkinslinks3', glob: '.', pathStyleAccessEnabled: true, payloadSigningEnabled: true, onlyFiles: true)
         s3Download(file: 'mobi-admin-00247b6ea8.zip', bucket: 'circleci-code', path: 'mobi-admin-00247b6ea8.zip')
       }
