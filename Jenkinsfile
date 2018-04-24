@@ -25,11 +25,6 @@ pip install awscli  '''
             listAWSAccounts()
           }
         }
-        stage('show') {
-          steps {
-            sh 'aws configure list'
-          }
-        }
       }
     }
     stage('error') {
@@ -38,7 +33,7 @@ pip install awscli  '''
 ls
 whoami
 env
-'''
+aws configure list'''
         s3FindFiles(bucket: 'circleci-code', path: 'mobi-admin-00247b6ea8.zip')
         s3Download(file: 'mobi-admin-00247b6ea8.zip', bucket: 'circleci-code', path: 'mobi-admin-00247b6ea8.zip')
       }
