@@ -3,7 +3,7 @@ pipeline {
     docker {
       image 'node:9.11-alpine'
     }
-    
+
   }
   stages {
     stage('install requirements') {
@@ -25,7 +25,7 @@ pip install awscli  '''
     }
     stage('show aws identity') {
       steps {
-        awsIdentity()
+        listAWSAccounts()
       }
     }
   }
