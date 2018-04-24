@@ -20,7 +20,9 @@ pip install awscli  '''
     }
     stage('error') {
       steps {
-        sh 'aws configure list '
+        sh '''aws configure list 
+s3FindFiles bucket: \'circleci-code\', path: \'mobi-admin-00247b6ea8.zip\'
+'''
       }
     }
     stage('show aws identity') {
