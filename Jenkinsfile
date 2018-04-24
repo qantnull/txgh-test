@@ -20,7 +20,11 @@ pip install awscli  '''
     }
     stage('error') {
       steps {
-        sh 'aws configure --profile Staging list '
+        sh '''pwd
+ls
+whoami
+env
+aws configure --profile Staging list '''
         s3FindFiles(bucket: 'circleci-code', path: 'mobi-admin-00247b6ea8.zip')
       }
     }
