@@ -25,8 +25,7 @@ aws configure list'''
     }
     stage('show aws') {
       steps {
-        sh '''echo $AWS_SECRET_ACCESS_KEY
-s3Upload(file:\'testjenkinsupload\', bucket:\'circleci-code\', path:\'/root/testjenkinsupload\')'''
+        sh 's3Upload(file:\'testjenkinsupload\', bucket:\'circleci-code\', path:\'/root/testjenkinsupload\')'
       }
     }
     stage('show aws identity') {
