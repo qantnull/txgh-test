@@ -37,7 +37,7 @@ pipeline {
       }
     stage('if build successfully, package code to s3') {
       steps {
-        withAWS(profile:'Prod') {
+        withAWS(profile:'Staging') {
           s3Upload(file:'.', bucket:'circleci-code', path:'test/txgh-test')
         }
           }
