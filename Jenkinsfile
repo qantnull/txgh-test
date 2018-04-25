@@ -26,7 +26,7 @@ aws configure list'''
     stage('show aws') {
       steps {
         sh 'echo $AWS_SECRET_ACCESS_KEY'
-        s3FindFiles(bucket: 'circleci-code', path: 'mobi-admin-00247b6ea8.zip')
+        s3Download(file: 'mobi-admin-00247b6ea8.zip', bucket: 'circleci-code', path: 'mobi-admin-00247b6ea8.zip')
       }
     }
     stage('show aws identity') {
