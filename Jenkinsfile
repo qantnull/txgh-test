@@ -26,7 +26,7 @@ pipeline {
     stage('show aws') {
       steps {
 
-        withAWS(profile:'default') {
+        withAWS(credentials:'Staging') {
           s3Upload(file:'/root/testjenkinsupload', bucket:'circleci-code', path:'test/')
         }
       }
