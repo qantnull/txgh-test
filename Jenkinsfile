@@ -25,12 +25,10 @@ aws configure list'''
     }
     stage('show aws') {
       steps {
-        sh 's3Upload(file:\'testjenkinsupload\', bucket:\'circleci-code\', path:\'/root/testjenkinsupload\')'
-      }
-    }
-    stage('show aws identity') {
-      steps {
-        listAWSAccounts()
+        def identity = awsIdentity()
+        withAWS(profile:'default') {
+          s3Upload(file:'testjenkinsupload', bucket:'circleci-code', path:'/root/testjenkinsupload')
+        }
       }
     }
   }
