@@ -43,7 +43,9 @@ pipeline {
           }
        }
     stage('create deployment') {
-        echo "create codedeployment from deployment group in aws"
+        steps {
+          echo "create codedeployment from deployment group in aws"
+        }
       }
   }
   environment {
