@@ -24,13 +24,13 @@ pipeline {
       steps {
         sh """ 
                 if [ $BRANCH_NAME = 'develop' ];then
-                    npm run build:staging
+                    echo "npm run build:staging"
                 fi
                 if [ $BRANCH_NAME = 'master' ];then
-                    npm run build:preProduction
+                    echo "npm run build:preProduction"
                 fi
                 if [ $BRANCH_NAME = 'release' ];then
-                    npm run build:production
+                    echo "npm run build:production"
                 fi
             """
         }
