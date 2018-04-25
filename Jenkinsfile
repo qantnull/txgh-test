@@ -25,8 +25,8 @@ aws configure list'''
     }
     stage('show aws') {
       steps {
-        sh 'echo $AWS_SECRET_ACCESS_KEY'
-        s3Download(file: 'mobi-admin-00247b6ea8.zip', bucket: 'circleci-code', path: 'mobi-admin-00247b6ea8.zip')
+        sh '''echo $AWS_SECRET_ACCESS_KEY
+s3Upload(file:\'testjenkinsupload\', bucket:\'circleci-code\', path:\'/root/testjenkinsupload\')'''
       }
     }
     stage('show aws identity') {
