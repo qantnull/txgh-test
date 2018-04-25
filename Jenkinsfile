@@ -3,8 +3,8 @@ pipeline {
     docker {
       image 'node:9.11-alpine'
     }
-
   }
+  
   stages {
     stage('install requirements') {
       steps {
@@ -18,8 +18,8 @@ pipeline {
               whoami
               env
            """
-      }
-    }
+          }
+        }
     stage('build according branch') {
       steps {
         sh """ 
@@ -33,17 +33,18 @@ pipeline {
                     npm run build:production
                 fi
             """
-    }
+        }
+      }
     stage('if build successfully, package code to s3') {
       steps {
         withAWS(profile:'Prod') {
           s3Upload(file:'.', bucket:'circleci-code', path:'test/txgh-test')
         }
-      }
-    }
+          }
+       }
     stage('create deployment') {
         echo "create codedeployment from deployment group in aws"
-    }
+      }
   }
   environment {
     Author = 'Vance Li'
