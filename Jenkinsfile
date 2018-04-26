@@ -45,6 +45,7 @@ pipeline {
     stage('create deployment') {
         steps {
           echo "create codedeployment from deployment group in aws"
+          step([$class: 'AWSCodeDeployPublisher', applicationName: "${PROD_CODEDEPLOY_APPLICATION}", awsAccessKey: '', awsSecretKey: '', credentials: 'awsAccessKey', deploymentGroupAppspec: false, deploymentGroupName: "${JOB_NAME}", deploymentMethod: 'deploy', excludes: '', iamRoleArn: '', includes: '**', proxyHost: '', proxyPort: 0, region: 'ap-northeast-1', s3bucket: "${PROD_BUCKET_NAME}", s3prefix: '', subdirectory: '', versionFileName: '', waitForCompletion: false])
         }
       }
   }
