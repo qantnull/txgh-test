@@ -38,7 +38,7 @@ pipeline {
     stage('if build successfully, package code to s3') {
       steps {
         withAWS(profile:'Prod') {
-          s3Upload(file:'.', bucket:'circleci-code', path:"JenkinsCI/${JOB_NAME}-${BRANCH_NAME}-${BUILD_NUMBER}")
+          s3Upload(file:'.', bucket:'circleci-code', path:"JenkinsCI/${JOB_NAME}-${BUILD_NUMBER}")
         }
           }
        }
