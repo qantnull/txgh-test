@@ -18,7 +18,8 @@ pipeline {
                       ls
                       whoami
                       env
-                      echo $WORKSPACE
+                      ls -l /opt/awsconfig
+                      cat /opt/awsconfig/.aws/config
                       aws configure list --profile Satging
                    """
       }
