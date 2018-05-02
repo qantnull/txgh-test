@@ -17,7 +17,7 @@ pipeline {
               ls
               whoami
               env
-              cat ~/.aws/config
+              cat /var/lib/jenkins/.aws/config
               aws configure list --profile Satging
            """
           }
