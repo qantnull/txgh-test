@@ -41,15 +41,12 @@ pipeline {
         withAWS(profile: 'Prod') {
           s3Upload(file: '.', bucket: 'circleci-code', path: "JenkinsCI/${JOB_NAME}-${BUILD_NUMBER}")
         }
-        withAWS(profile: 'Prod') {
-          aws configure list
-        }
-
       }
     }
     stage('create deployment') {
       steps {
         echo 'create codedeployment from deployment group in aws'
+        step([$class: 'AWSCodeDeployPublisher', applicationName: 'MOBI-Staging', awsAccessKey: '', awsSecretKey: '', credentials: 'Staging', deploymentGroupAppspec: false, deploymentGroupName: 'txgh-test', deploymentMethod: 'deploy', excludes: '', iamRoleArn: '', includes: '**', proxyHost: '', proxyPort: 0, region: 'cn-north-1', s3bucket: 'jenkinscicode', s3prefix: 'CodeDeploy/txgh-test', subdirectory: '', versionFileName: '', waitForCompletion: false])
       }
     }
   }
