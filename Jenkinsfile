@@ -18,9 +18,6 @@ pipeline {
                       ls
                       whoami
                       env
-                      ls -l /opt/awsconfig
-                      cat /opt/awsconfig/.aws/config
-                      aws configure list --profile Satging
                    """
       }
     }
@@ -43,6 +40,9 @@ pipeline {
       steps {
         withAWS(profile: 'Prod') {
           s3Upload(file: '.', bucket: 'circleci-code', path: "JenkinsCI/${JOB_NAME}-${BUILD_NUMBER}")
+        }
+        withAWS(profile: 'Prod') {
+          aws configure list
         }
 
       }
