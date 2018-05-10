@@ -42,7 +42,7 @@ pipeline {
               awsSecretKey: '', 
               credentials: 'Staging', 
               deploymentGroupAppspec: true, 
-              deploymentGroupName: '${JOB_NAME##*/}', 
+              deploymentGroupName: ${JOB_NAME##*/}, 
               deploymentMethod: 'deploy', 
               iamRoleArn: '', 
               includes: '**', 
