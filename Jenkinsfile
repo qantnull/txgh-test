@@ -7,13 +7,30 @@ pipeline {
 
   }
   stages {
-    stage('Build') {
+    stage('Check Language Version') {
       steps {
                 nodejs(nodeJSInstallationName: 'node10.1.0') {
                 sh 'npm --version'
                 sh 'node --version'
            }
       }
+    }
+    
+    stage('Build According BranchName'){
+      steps {
+                 sh  """ 
+                      if [ ${BRANCH_NAME} = 'develop' ];then
+                          echo "npm run build:staging"
+                      fi
+                      if [ ${BRANCH_NAME} = 'master' ];then
+                          echo "npm run build:preProduction"
+                      fi
+                      if [ ${BRANCH_NAME} = 'release' ];then
+                          echo "npm run build:production"
+                      fi
+                    """
+      }
+      
     }
  
     stage('create deployment') {
@@ -25,16 +42,16 @@ pipeline {
               awsSecretKey: '', 
               credentials: 'Staging', 
               deploymentGroupAppspec: true, 
-              deploymentGroupName: 'txgh-test', 
+              deploymentGroupName: '$JOB_NAME', 
               deploymentMethod: 'deploy', 
               iamRoleArn: '', 
               includes: '**', 
-              excludes: 'node_modules/',
+              excludes: '.node_modules/',
               proxyHost: '', 
               proxyPort: 0, 
               region: 'cn-north-1', 
               s3bucket: 'jenkinscicode', 
-              s3prefix: 'CodeDeploy/txgh-test', 
+              s3prefix: 'CodeDeploy/$JOB_NAME', 
               subdirectory: '', 
               versionFileName: '', 
               waitForCompletion: false])
