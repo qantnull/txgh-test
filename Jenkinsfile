@@ -27,7 +27,7 @@ pipeline {
               deploymentGroupAppspec: true, 
               deploymentGroupName: 'txgh-test', 
               deploymentMethod: 'deploy', 
-              excludes: '.node_modules', 
+              excludes: './node_modules', 
               iamRoleArn: '', 
               includes: '**', 
               proxyHost: '', 
@@ -35,7 +35,8 @@ pipeline {
               region: 'cn-north-1', 
               s3bucket: 'jenkinscicode', 
               s3prefix: 'CodeDeploy/txgh-test', 
-              subdirectory: '', versionFileName: '', 
+              subdirectory: '', 
+              versionFileName: '', 
               waitForCompletion: false])
       }
     }
