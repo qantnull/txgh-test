@@ -30,7 +30,7 @@ pipeline {
                       fi
                     """
                 sh """
-                    project_name='${JOB_NAME##*/}'
+                    project_name=${JOB_NAME##*/}
                     echo $project_name
                 """
       }
@@ -55,7 +55,7 @@ pipeline {
               proxyPort: 0, 
               region: 'cn-north-1', 
               s3bucket: 'jenkinscicode', 
-              s3prefix: 'CodeDeploy/${JOB_NAME##*/}', 
+              s3prefix: 'CodeDeploy/$project_name', 
               subdirectory: '', 
               versionFileName: '', 
               waitForCompletion: false])
