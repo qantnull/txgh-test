@@ -35,7 +35,7 @@ pipeline {
     stage('create staging deployment') {
       when {
               // case insensitive regular expression for truthy values
-              expression { $BRANCH_NAME == 'develop' }
+              expression { env.BRANCH_NAME == 'develop' }
           }
       steps {
         input 'Are you sure to deploy?'
