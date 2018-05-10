@@ -9,7 +9,7 @@ pipeline {
   stages {
     stage('Build') {
       steps {
-                nodejs(nodeJSInstallationName: 'node10.1.0', configId: '<config-file-provider-id>') {
+                nodejs(nodeJSInstallationName: 'node10.1.0') {
                 sh 'npm --version'
                 sh 'node --version'
            }
