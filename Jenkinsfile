@@ -29,10 +29,6 @@ pipeline {
                           echo "npm run build:production"
                       fi
                     """
-        
-                sh  'project_name=${JOB_NAME##*/}'
-                sh  'echo $project_name'
-             
       }
       
     }
@@ -46,7 +42,7 @@ pipeline {
               awsSecretKey: '', 
               credentials: 'Staging', 
               deploymentGroupAppspec: true, 
-              deploymentGroupName: '$project_name', 
+              deploymentGroupName: '$PROJECT_NAME', 
               deploymentMethod: 'deploy', 
               iamRoleArn: '', 
               includes: '**', 
@@ -55,7 +51,7 @@ pipeline {
               proxyPort: 0, 
               region: 'cn-north-1', 
               s3bucket: 'jenkinscicode', 
-              s3prefix: 'CodeDeploy/$project_name', 
+              s3prefix: 'CodeDeploy/$PROJECT_NAME', 
               subdirectory: '', 
               versionFileName: '', 
               waitForCompletion: false])
@@ -64,5 +60,6 @@ pipeline {
   }
   environment {
     Author = 'Vance Li'
+    PROJECT_NAME = 'txgh-test'
   }
 }
