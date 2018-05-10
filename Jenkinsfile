@@ -32,7 +32,11 @@ pipeline {
                             """
       }
     }
-    stage('create deployment') {
+    stage('create staging deployment') {
+      when {
+              // case insensitive regular expression for truthy values
+              expression { $BRANCH_NAME == 'develop' }
+          }
       steps {
         input 'Are you sure to deploy?'
         echo 'create codedeployment from deployment group in aws'
