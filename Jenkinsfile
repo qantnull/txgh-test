@@ -13,6 +13,7 @@ pipeline {
                 sh 'npm --version'
                 sh 'node --version'
            }
+      }
     }
  
     stage('create deployment') {
