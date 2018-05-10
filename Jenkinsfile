@@ -42,7 +42,7 @@ pipeline {
               awsSecretKey: '', 
               credentials: 'Staging', 
               deploymentGroupAppspec: true, 
-              deploymentGroupName: '$JOB_NAME', 
+              deploymentGroupName: '${JOB_NAME##*/}', 
               deploymentMethod: 'deploy', 
               iamRoleArn: '', 
               includes: '**', 
@@ -51,7 +51,7 @@ pipeline {
               proxyPort: 0, 
               region: 'cn-north-1', 
               s3bucket: 'jenkinscicode', 
-              s3prefix: 'CodeDeploy/$JOB_NAME', 
+              s3prefix: 'CodeDeploy/${JOB_NAME##*/}', 
               subdirectory: '', 
               versionFileName: '', 
               waitForCompletion: false])
