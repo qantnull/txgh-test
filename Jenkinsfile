@@ -18,6 +18,7 @@ pipeline {
                 nodejs(nodeJSInstallationName: 'node10.1.0') {
                 sh 'npm --version'
                 sh 'node --version'
+                sh 'echo $PROJECT_NAME'
            }
       }
     }
