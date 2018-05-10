@@ -29,10 +29,10 @@ pipeline {
                           echo "npm run build:production"
                       fi
                     """
-                sh """
-                    project_name=${JOB_NAME##*/}
-                    echo $project_name
-                """
+        
+                sh  'project_name=${JOB_NAME##*/}'
+                sh  'echo $project_name'
+             
       }
       
     }
