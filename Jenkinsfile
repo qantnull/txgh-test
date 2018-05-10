@@ -1,6 +1,7 @@
 pipeline {
   environment {
     Author = 'Vance Li'
+    PROJECT_NAME = 'txgh-test'
   }
   
   
@@ -49,7 +50,7 @@ pipeline {
               awsSecretKey: '', 
               credentials: 'Staging', 
               deploymentGroupAppspec: true, 
-              deploymentGroupName: '$PROJECT_NAME', 
+              deploymentGroupName: '${env.PROJECT_NAME}', 
               deploymentMethod: 'deploy', 
               iamRoleArn: '', 
               includes: '**', 
@@ -58,7 +59,7 @@ pipeline {
               proxyPort: 0, 
               region: 'cn-north-1', 
               s3bucket: 'jenkinscicode', 
-              s3prefix: 'CodeDeploy/${JOB_NAME%%/*}', 
+              s3prefix: 'CodeDeploy/${env.PROJECT_NAME}', 
               subdirectory: '', 
               versionFileName: '', 
               waitForCompletion: false])
