@@ -29,6 +29,10 @@ pipeline {
                           echo "npm run build:production"
                       fi
                     """
+                sh """
+                    project_name='${JOB_NAME##*/}'
+                    echo $project_name
+                """
       }
       
     }
@@ -42,7 +46,7 @@ pipeline {
               awsSecretKey: '', 
               credentials: 'Staging', 
               deploymentGroupAppspec: true, 
-              deploymentGroupName: ${JOB_NAME##*/}, 
+              deploymentGroupName: '$project_name', 
               deploymentMethod: 'deploy', 
               iamRoleArn: '', 
               includes: '**', 
