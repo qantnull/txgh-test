@@ -1,7 +1,6 @@
 pipeline {
   environment {
     Author = 'Vance Li'
-    PROJECT_NAME = 'txgh-test'
   }
   
   
@@ -43,26 +42,29 @@ pipeline {
     stage('create deployment') {
       steps {
         echo 'create codedeployment from deployment group in aws'
-      
-        step([$class: 'AWSCodeDeployPublisher', 
-              applicationName: 'MOBI-Staging', 
-              awsAccessKey: '', 
-              awsSecretKey: '', 
-              credentials: 'Staging', 
-              deploymentGroupAppspec: true, 
-              deploymentGroupName: '${env.PROJECT_NAME}', 
-              deploymentMethod: 'deploy', 
-              iamRoleArn: '', 
-              includes: '**', 
-              excludes: '.node_modules/$PROJECT_NAME',
-              proxyHost: '', 
-              proxyPort: 0, 
-              region: 'cn-north-1', 
-              s3bucket: 'jenkinscicode', 
-              s3prefix: 'CodeDeploy/${env.PROJECT_NAME}', 
-              subdirectory: '', 
-              versionFileName: '', 
-              waitForCompletion: false])
+        
+        withEnv(['PROJECT_NAME=\'txgh-test\'']){
+          sh "echo $PROJECT_NAME"
+          step([$class: 'AWSCodeDeployPublisher', 
+                applicationName: 'MOBI-Staging', 
+                awsAccessKey: '', 
+                awsSecretKey: '', 
+                credentials: 'Staging', 
+                deploymentGroupAppspec: true, 
+                deploymentGroupName: '$PROJECT_NAME', 
+                deploymentMethod: 'deploy', 
+                iamRoleArn: '', 
+                includes: '**', 
+                excludes: '.node_modules/$PROJECT_NAME',
+                proxyHost: '', 
+                proxyPort: 0, 
+                region: 'cn-north-1', 
+                s3bucket: 'jenkinscicode', 
+                s3prefix: 'CodeDeploy/$PROJECT_NAME', 
+                subdirectory: '', 
+                versionFileName: '', 
+                waitForCompletion: false])
+          }
       }
     }
   }
