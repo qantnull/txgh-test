@@ -43,13 +43,15 @@ pipeline {
     stage('create deployment') {
       steps {
         echo 'create codedeployment from deployment group in aws'
+        def jobBaseName = "${env.JOB_NAME}".split('/').last()
+        sh 'echo "Job Name (excl. path): ${jobBaseName}"'
         step([$class: 'AWSCodeDeployPublisher', 
               applicationName: 'MOBI-Staging', 
               awsAccessKey: '', 
               awsSecretKey: '', 
               credentials: 'Staging', 
               deploymentGroupAppspec: true, 
-              deploymentGroupName: '$PROJECT_NAME', 
+              deploymentGroupName: '$jobBaseName', 
               deploymentMethod: 'deploy', 
               iamRoleArn: '', 
               includes: '**', 
@@ -58,7 +60,7 @@ pipeline {
               proxyPort: 0, 
               region: 'cn-north-1', 
               s3bucket: 'jenkinscicode', 
-              s3prefix: 'CodeDeploy/$PROJECT_NAME', 
+              s3prefix: 'CodeDeploy/$jobBaseName', 
               subdirectory: '', 
               versionFileName: '', 
               waitForCompletion: false])
