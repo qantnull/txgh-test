@@ -27,7 +27,7 @@ pipeline {
               deploymentGroupAppspec: true, 
               deploymentGroupName: 'txgh-test', 
               deploymentMethod: 'deploy', 
-              excludes: './node_modules', 
+              excludes: 'node_modules', 
               iamRoleArn: '', 
               includes: '**', 
               proxyHost: '', 
