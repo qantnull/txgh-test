@@ -1,7 +1,6 @@
 pipeline {
   environment {
     Author = 'Vance Li'
-    PROJECT_NAME = 'txgh-test'
   }
   
   
@@ -18,7 +17,7 @@ pipeline {
                 nodejs(nodeJSInstallationName: 'node10.1.0') {
                 sh 'npm --version'
                 sh 'node --version'
-                sh 'echo $JOB_BASE_NAME'
+                sh 'echo $PROJECT_NAME'
            }
       }
     }
