@@ -18,7 +18,7 @@ pipeline {
                 nodejs(nodeJSInstallationName: 'node10.1.0') {
                 sh 'npm --version'
                 sh 'node --version'
-                sh 'echo $PROJECT_NAME'
+                sh 'echo $JOB_BASE_NAME'
            }
       }
     }
@@ -43,15 +43,14 @@ pipeline {
     stage('create deployment') {
       steps {
         echo 'create codedeployment from deployment group in aws'
-        def jobBaseName = "${env.JOB_NAME}".split('/').last()
-        sh 'echo "Job Name (excl. path): ${jobBaseName}"'
+      
         step([$class: 'AWSCodeDeployPublisher', 
               applicationName: 'MOBI-Staging', 
               awsAccessKey: '', 
               awsSecretKey: '', 
               credentials: 'Staging', 
               deploymentGroupAppspec: true, 
-              deploymentGroupName: '$jobBaseName', 
+              deploymentGroupName: '$JOB_BASE_NAME', 
               deploymentMethod: 'deploy', 
               iamRoleArn: '', 
               includes: '**', 
@@ -60,7 +59,7 @@ pipeline {
               proxyPort: 0, 
               region: 'cn-north-1', 
               s3bucket: 'jenkinscicode', 
-              s3prefix: 'CodeDeploy/$jobBaseName', 
+              s3prefix: 'CodeDeploy/$JOB_BASE_NAME', 
               subdirectory: '', 
               versionFileName: '', 
               waitForCompletion: false])
