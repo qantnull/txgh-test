@@ -29,7 +29,7 @@ pipeline {
               deploymentMethod: 'deploy', 
               iamRoleArn: '', 
               includes: '**', 
-              excludes: 'node_modules',
+              excludes: 'node_modules/',
               proxyHost: '', 
               proxyPort: 0, 
               region: 'cn-north-1', 
