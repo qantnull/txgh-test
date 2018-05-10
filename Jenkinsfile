@@ -1,6 +1,11 @@
 pipeline {
+  environment {
+    Author = 'Vance Li'
+    PROJECT_NAME = 'txgh-test'
+  }
+  
+  
   agent {
-    env.PROJECT_NAME = "txgh-test"
     docker {
       image 'node:9.11-alpine'
       args '-v /var/lib/jenkins:/opt/awsconfig'
@@ -59,7 +64,5 @@ pipeline {
       }
     }
   }
-  environment {
-    Author = 'Vance Li'
-  }
+
 }
