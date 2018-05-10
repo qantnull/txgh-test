@@ -1,11 +1,13 @@
 pipeline {
+  env.PROJECT_NAME = "txgh-test"
+  
   agent {
     docker {
       image 'node:9.11-alpine'
       args '-v /var/lib/jenkins:/opt/awsconfig'
     }
-
   }
+  
   stages {
     stage('Check Language Version') {
       steps {
@@ -60,6 +62,5 @@ pipeline {
   }
   environment {
     Author = 'Vance Li'
-    PROJECT_NAME = 'txgh-test'
   }
 }
