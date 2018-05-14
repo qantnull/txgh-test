@@ -5,7 +5,8 @@ pipeline {
       args '-v /var/lib/jenkins:/opt/awsconfig'
     }
   }
-  
+  currentBuild.result = "SUCCESS"
+  try {
   stages {
     stage('Check Language Version') {
       steps {
@@ -32,8 +33,7 @@ pipeline {
                             """
       }
     }
-    stage('Run deploy') {
-    parallel {
+ 
     stage('create staging deployment') {
       when {
               // case insensitive regular expression for truthy values
@@ -101,9 +101,21 @@ pipeline {
 
       }
     }
+
+  }  //stages
+
+   catch (err) {
+
+        currentBuild.result = "FAILURE"
+
+        sh 'echo "failed"'
+
+        throw err
     }
-    }
-  }
+    
+  }  //try
+
+  
   environment {
     Author = 'Vance Li'
   }
