@@ -4,8 +4,8 @@ pipeline {
       image 'node:9.11-alpine'
       args '-v /var/lib/jenkins:/opt/awsconfig'
     }
-
   }
+  
   stages {
     stage('Check Language Version') {
       steps {
@@ -32,6 +32,8 @@ pipeline {
                             """
       }
     }
+    stage('Run deploy') {
+    parallel {
     stage('create staging deployment') {
       when {
               // case insensitive regular expression for truthy values
@@ -64,6 +66,42 @@ pipeline {
         }
 
       }
+    }
+    
+      stage('create production deployment') {
+      when {
+              // case insensitive regular expression for truthy values
+              expression { env.BRANCH_NAME == 'develop' }
+          }
+      steps {
+        input 'Are you sure to deploy?'
+        echo 'create codedeployment from deployment group in aws'
+        withEnv(overrides: ['PROJECT_NAME=\'txgh-test\'']) {
+          sh "echo $PROJECT_NAME"
+          step([$class: 'AWSCodeDeployPublisher', 
+                          applicationName: 'MOBI-Staging', 
+                          awsAccessKey: '', 
+                          awsSecretKey: '', 
+                          credentials: 'Staging', 
+                          deploymentGroupAppspec: true, 
+                          deploymentGroupName: 'txgh-test', 
+                          deploymentMethod: 'deploy', 
+                          iamRoleArn: '', 
+                          includes: '**', 
+                          excludes: '.node_modules/',
+                          proxyHost: '', 
+                          proxyPort: 0, 
+                          region: 'cn-north-1', 
+                          s3bucket: 'jenkinscicode', 
+                          s3prefix: 'CodeDeploy/txgh-test', 
+                          subdirectory: '', 
+                          versionFileName: '', 
+                          waitForCompletion: false])
+        }
+
+      }
+    }
+    }
     }
   }
   environment {
