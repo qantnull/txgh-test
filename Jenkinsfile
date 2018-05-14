@@ -109,7 +109,7 @@ pipeline {
                         'msgtype': 'markdown',
                         'markdown': {
                             'title': '$JOB_NAME deployed successfully',
-                            'text': '### **$JOB_NAME** deployed \n\n> **$JOB_NAME** deployed to *${HOSTNAME}* **successfully**\n\n> restart services is **${SERVICE}**\n'
+                            'text': '### **$JOB_NAME** deployed \n\n> **$JOB_NAME**\n'
                         }
                     }"
           """
