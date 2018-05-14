@@ -102,7 +102,7 @@ pipeline {
     } //stage
     stage('Cleanup') {
       sh """ 
-          curl -XPOST https://oapi.dingtalk.com/robot/send\?access_token\=$DToken \
+          curl -XPOST https://oapi.dingtalk.com/robot/send?access_token=$DToken \
             -H "Content-Type: application/json" \
             -d "{
                     'msgtype': 'markdown',
