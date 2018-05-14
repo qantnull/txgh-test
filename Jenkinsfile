@@ -67,7 +67,7 @@ pipeline {
       }
     }
     
-      stage('create production deployment') {
+    stage('create production deployment') {
       when {
               // case insensitive regular expression for truthy values
               expression { env.BRANCH_NAME == 'develop' }
@@ -99,6 +99,19 @@ pipeline {
         }
 
       }
+    } //stage
+    stage('Cleanup') {
+      sh """ 
+          curl -XPOST https://oapi.dingtalk.com/robot/send\?access_token\=$DToken \
+            -H "Content-Type: application/json" \
+            -d "{
+                    'msgtype': 'markdown',
+                    'markdown': {
+                        'title': '$JOB_NAME deployed successfully',
+                        'text': '### **$JOB_NAME** deployed \n\n> **$JOB_NAME** deployed to *${HOSTNAME}* **successfully**\n\n> restart services is **${SERVICE}**\n'
+                    }
+                }"
+      """
     }
 
   }  //stages
