@@ -10,6 +10,7 @@ pipeline {
     stage('Check Language Version') {
       steps {
         nodejs('node10.1.0') {
+          apk --no-cache add curl  
           sh 'npm --version'
           sh 'node --version'
           sh 'echo $PROJECT_NAME'
