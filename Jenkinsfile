@@ -10,7 +10,13 @@ pipeline {
     stage('Check Language Version') {
       steps {
         
-        checkout scm
+       checkout([
+        $class: 'GitSCM',
+        branches: scm.branches,
+        doGenerateSubmoduleConfigurations: true,
+        extensions: scm.extensions + [[$class: 'SubmoduleOption', parentCredentials: true]],
+        userRemoteConfigs: scm.userRemoteConfigs
+    ])
         
         nodejs('node10.1.0') {
           sh 'apk --no-cache add curl'
