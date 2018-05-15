@@ -10,6 +10,7 @@ pipeline {
     stage('Check Language Version') {
       steps {
         
+        checkout([$class: 'GitSCM', branches: [[name: '*/develop']], doGenerateSubmoduleConfigurations: false, extensions: [], submoduleCfg: [], userRemoteConfigs: [[credentialsId: 'github', url: 'https://github.com/mobiwallet/mobi-card.git']]])
      checkout([$class: 'GitSCM', branches: [[name: '*/develop']], doGenerateSubmoduleConfigurations: false, extensions: [[$class: 'RelativeTargetDirectory', relativeTargetDir: 'src/mobi-app-localization']], submoduleCfg: [], userRemoteConfigs: [[credentialsId: 'github', url: 'https://github.com/mobiwallet/mobi-app-localization.git']]])
 
         
