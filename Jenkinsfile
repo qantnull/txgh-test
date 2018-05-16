@@ -5,6 +5,9 @@ pipeline {
       args '-v /var/lib/jenkins:/opt/awsconfig'
     }
   }
+  options {
+    skipDefaultCheckout(true)
+  }
   
   stages {
     stage('Check Language Version') {
