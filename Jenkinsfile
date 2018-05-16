@@ -22,6 +22,9 @@ pipeline {
                   userRemoteConfigs: [[credentialsId: 'd0f6a358-6f2e-4f11-823b-b0c31838f942', 
                                        url: 'https://github.com/mobiwallet/mobi-card.git']]])
 
+        sh 'cd src/'
+        git credentialsId: 'd0f6a358-6f2e-4f11-823b-b0c31838f942', url: 'https://github.com/mobiwallet/mobi-app-localization.git'
+        sh 'cd ../'
         
         nodejs('node10.1.0') {
           sh 'apk --no-cache add curl'
