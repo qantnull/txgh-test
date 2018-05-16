@@ -14,7 +14,7 @@ pipeline {
                   doGenerateSubmoduleConfigurations: false, 
                   extensions: [[$class: 'SubmoduleOption', 
                                 disableSubmodules: false, 
-                                parentCredentials: true, 
+                                parentCredentials: false, 
                                 recursiveSubmodules: true, 
                                 reference: '', 
                                 trackingSubmodules: false]], 
