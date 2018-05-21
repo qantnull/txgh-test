@@ -31,7 +31,7 @@ pipeline {
           sh 'node --version'
           sh 'echo $PROJECT_NAME'
         }
-        dingding accessToken: '45ef1643835470b4561d6b3597f6f256b7c9a47e032d7e2ca19f079e01c7a211'
+       dingTalk accessToken: “ccf14be7b8173ca4f3adb8531916fc37355f6921b3c58655cde7356279a273ea”
 
       }
     }
