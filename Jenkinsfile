@@ -30,8 +30,8 @@ pipeline {
           sh 'npm --version'
           sh 'node --version'
           sh 'echo $PROJECT_NAME'
+          dingTalk accessToken: "ccf14be7b8173ca4f3adb8531916fc37355f6921b3c58655cde7356279a273ea"
         }
-       dingTalk accessToken: "ccf14be7b8173ca4f3adb8531916fc37355f6921b3c58655cde7356279a273ea"
 
       }
     }
