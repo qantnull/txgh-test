@@ -30,7 +30,7 @@ pipeline {
           sh 'npm --version'
           sh 'node --version'
           sh 'echo $PROJECT_NAME'
-          dingTalk accessToken: "ccf14be7b8173ca4f3adb8531916fc37355f6921b3c58655cde7356279a273ea",message:"build failed"
+          
         }
 
       }
@@ -38,6 +38,7 @@ pipeline {
     stage("submodule process") {
       steps {
         echo "ignore"
+        dingTalk accessToken: 'ccf14be7b8173ca4f3adb8531916fc37355f6921b3c58655cde7356279a273ea', imageUrl: '', jenkinsUrl: '', message: 'BuildFailed', notifyPeople: '13761247272'
       }
     }
     stage('Build According BranchName') {
