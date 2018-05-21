@@ -12,19 +12,7 @@ pipeline {
   stages {
     stage('Check Language Version') {
       steps {
-        checkout([$class: 'GitSCM',
-                  branches: [[name: '*/develop']],
-                  doGenerateSubmoduleConfigurations: false,
-                  extensions: [[$class: 'SubmoduleOption',
-                                disableSubmodules: false,
-                                parentCredentials: false,
-                                recursiveSubmodules: true,
-                                reference: '',
-                                trackingSubmodules: false]],
-                  submoduleCfg: [],
-                  userRemoteConfigs: [[credentialsId: 'd0f6a358-6f2e-4f11-823b-b0c31838f942',
-                                       url: 'https://github.com/mobiwallet/mobi-card.git']]])
-
+        checkout scm
         nodejs('node10.1.0') {
           sh 'apk --no-cache add curl'
           sh 'npm --version'
