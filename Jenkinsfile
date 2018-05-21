@@ -11,18 +11,16 @@ pipeline {
 
   stages {
     stage('Check Language Version') {
-      steps {
         post {
           always {
-
             dingTalk accessToken: 'ccf14be7b8173ca4f3adb8531916fc37355f6921b3c58655cde7356279a273ea',
              imageUrl: 'https://www.iconsdb.com/icons/preview/soylent-red/x-mark-3-xxl.png',
              jenkinsUrl: 'https://jenkins.mobi.me',
              message: '  Pipeline start..  ',
              notifyPeople: '13761247272'
-
             }
           }
+      steps {
         checkout scm
         nodejs('node10.1.0') {
           sh 'apk --no-cache add curl'
