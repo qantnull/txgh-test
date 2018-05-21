@@ -114,18 +114,9 @@ pipeline {
     } //stage
     stage('Cleanup') {
       steps {
-          sh """
-              curl -XPOST https://oapi.dingtalk.com/robot/send?access_token=$DToken \
-                -H "Content-Type: application/json" \
-                -d "{
-                        'msgtype': 'markdown',
-                        'markdown': {
-                            'title': '$JOB_NAME deployed successfully',
-                            'text': '### **$JOB_NAME** deployed \n\n> **$JOB_NAME**\n'
-                        }
-                    }"
-          """
+        echo 'test'
       }
+
     }// stage
 
   }  //stages
