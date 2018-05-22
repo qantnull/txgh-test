@@ -60,7 +60,9 @@ pipeline {
               expression { env.BRANCH_NAME == 'master' }
           }
       steps {
-        input 'Are you sure to deploy?'
+        timeout(time: 30, unit: 'SECONDS') {
+           input 'Are you sure to deploy?'
+        }
         echo 'create codedeployment from deployment group in aws'
         withEnv(overrides: ['PROJECT_NAME=\'txgh-test\'']) {
           sh "echo $PROJECT_NAME"
