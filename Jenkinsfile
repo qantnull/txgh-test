@@ -10,7 +10,6 @@ pipeline {
   }
 
   stages {
-    timeout(time: 30, unit: 'SECONDS') {
     stage('Check Language Version') {
       post {
         always {
@@ -32,7 +31,6 @@ pipeline {
         }
 
       }
-    }
     }
     stage("submodule process") {
       steps {
