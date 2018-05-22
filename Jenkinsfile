@@ -84,7 +84,7 @@ pipeline {
                           s3prefix: 'CodeDeploy/txgh-test',
                           subdirectory: '',
                           versionFileName: '',
-                          waitForCompletion: false])
+                          waitForCompletion: true])
         }
 
       }
@@ -118,7 +118,7 @@ pipeline {
                           s3prefix: 'CodeDeploy/txgh-test',
                           subdirectory: '',
                           versionFileName: '',
-                          waitForCompletion: false])
+                          waitForCompletion: true])
         }
 
       }
