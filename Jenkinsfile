@@ -132,11 +132,17 @@ pipeline {
   }  //stages
 
   post {
+
+    always {
+        echo "One way or another, I have finished and clean up"
+        deleteDir()
+      }
+
     aborted {
-       dingTalk accessToken: '$DToken',
+       dingTalk accessToken: 'ccf14be7b8173ca4f3adb8531916fc37355f6921b3c58655cde7356279a273ea',
         imageUrl: 'https://www.iconsdb.com/icons/preview/orange/info-2-xxl.png',
         jenkinsUrl: 'https://jenkins.mobi.me',
-        message: '  Build Aborted!  ',
+        message: '  Build Aborted! $Author ',
         notifyPeople: '13761247272'
     }
     fixed {
