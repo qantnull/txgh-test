@@ -3,3 +3,10 @@ os: linux
 files:
   - source: /
     destination: /data/txgh-test
+
+hooks:
+  BeforeInstall:
+    - location: scripts/install_before.sh
+      timeout: 300
+      runas: root
+  
