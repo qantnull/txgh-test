@@ -44,12 +44,14 @@ pipeline {
     }
     stage("submodule process") {
       steps {
+        sh 'ls -l'
         echo "ignore"
 
       }
     }
     stage('Build According BranchName') {
       steps {
+        sh 'ls -l'
         sh """
                               if [ ${BRANCH_NAME} = 'develop' ];then
                                   echo "npm run build:staging"
