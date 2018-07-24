@@ -3,6 +3,7 @@ pipeline {
     docker {
       label 'jenkins_hk'
       image 'node:9.11-alpine'
+      args '-u 0:0'
     }
   }
   options {
