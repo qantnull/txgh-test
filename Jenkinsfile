@@ -145,7 +145,7 @@ pipeline {
 
     always {
         echo "One way or another, I have finished and clean up"
-        deleteDir()
+       
       }
 
     aborted {
