@@ -1,6 +1,6 @@
 pipeline {
   agent {
-    node {
+    docker {
       label 'jenkins_hk'
       image 'node:9.11-alpine'
     }
