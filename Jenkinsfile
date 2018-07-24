@@ -1,6 +1,6 @@
 pipeline {
   agent {
-    label: jenkins_hk
+    label 'jenkins_hk'
   }
   options {
     skipDefaultCheckout(true)
