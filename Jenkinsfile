@@ -3,18 +3,17 @@ pipeline {
     node{
       label 'jenkins_hk'
     }
+    docker {
+       image 'node:9.11-alpine'
+       args '-v /var/lib/jenkins:/opt/awsconfig'
+    }
   }
   options {
     skipDefaultCheckout(true)
   }
 
+  
   stages {
-    agent {
-         docker {
-            image 'node:9.11-alpine'
-            args '-v /var/lib/jenkins:/opt/awsconfig'
-          }
-        }
     stage('Check Language Version') {
       post {
         always {
