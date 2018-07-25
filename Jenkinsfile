@@ -23,6 +23,7 @@ pipeline {
           }
       }
       steps {
+        sh 'whoami'
         checkout([$class: 'GitSCM', 
                     branches: [[name: '*/release']], 
                     doGenerateSubmoduleConfigurations: false, 
